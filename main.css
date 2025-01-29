@@ -1,0 +1,85 @@
+h1{
+    width: 100%;
+    text-align: center;
+}
+
+
+/*product-text-section*/
+.product-text-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-text-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 10px;    
+}
+
+.product-title{
+    width: 60%;
+    height: 30px;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.product-text{
+    width: 60%;
+    height: 150px;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+
+/*dnd-container*/
+.drop-target{
+    height: 15vw;
+    width: 15vw;
+    border-radius: 10px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.dnd-container{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+.img-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-container button{
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-container button:hover{
+    background-color: black;
+    color: white;
+}
+
+.btn-container button:active{
+    opacity: 0.3;
+}

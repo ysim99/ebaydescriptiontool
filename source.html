@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<head>
+ <meta charset="utf-8"/>
+ <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+ <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+ <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+ <link href="https://fonts.googleapis.com" rel="preconnect"/>
+ <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"/>
+ <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" referrerpolicy="no-referrer" rel="stylesheet"/>
+ <style>
+  /* Global Styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* Prevent highlight on tap */
+}
+
+h3{
+  margin-bottom: 15px;
+}
+
+/* Utility Classes */
+.space {
+  padding-top: 30px;
+}
+
+.inline-r {
+  padding-right: 30px;
+  display: inline-block;
+  float: right;
+}
+
+.inline-l {
+  padding-left: 30px;
+  display: inline-block;
+  float: left;
+}
+
+/* Typography */
+.title-txt {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.subtitle-txt {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.ringke_descr {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.font-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+/* Layout Containers */
+.main-container {
+  padding-bottom: 70px;
+}
+
+.title-container {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.title-mid {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #808080;
+}
+
+/* Navigation Bar */
+.navbar {
+  color: white;
+  display: flex;
+  height: 50px;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: -50px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(82, 67, 29, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px 10px 0 0;
+}
+
+.nav-title {
+  margin: 0;
+  padding: 14.3px;
+  flex: 1;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.nav-title:hover {
+  background: rgba(255, 255, 255, 0.75);
+  color: black;
+}
+
+.nav-title a {
+  color: inherit;
+  text-decoration: none;
+  display: block; /* Make the link block-level */
+  width: 100%; /* Make the link take the full width of nav-title */
+}
+
+.nav-title-left {
+  border-top-left-radius: 10px;
+}
+
+.nav-title-right {
+  border-top-right-radius: 10px;
+}
+
+/* Mobile Navbar */
+.mobile-navbar {
+  position: relative;
+}
+
+.logo-container {
+  height: 40px; /* Set the desired height */
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 40px;
+}
+
+.logo-container a {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Inherit the color from the parent */
+  font-weight: bold; /* Optional: make the text bold */
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dropdown-toggle {
+  display: none;
+}
+
+.dropdown-button {
+  float: right;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  padding: 0 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown-content {
+  height: 1px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  transition: 0.4s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Horizontal offset | Vertical offset | Blur radius | Color */
+}
+
+.dropdown-toggle:checked + .dropdown-button + .dropdown-content {
+  height: 60vh;
+  display: flex;
+}
+
+.dropdown-toggle:checked + .dropdown-button {
+  transform: rotate(45deg);
+}
+
+.dropdown-content a {
+  text-align: center;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+/* Hover Effect for Links */
+.dropdown-content a:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Banner Styles */
+.banner {
+  flex-grow: 1;
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.front-banner {
+  height: 100%;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.end-banner {
+  width: 90%;
+  height: 1px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-banner img {
+  width: 100%; 
+  height: 100%; 
+}
+
+/* Description Layout */
+ul {
+  list-style-type: circle;
+  padding-left: 50px;
+}
+
+li {
+  line-height: 2;
+}
+
+.description {
+  padding: 20px 0 0 0;
+}
+
+.product-description {
+  padding-top: 40px;
+  max-width: 1200px;
+  margin: 0 auto; /* Centers the product-description container */
+}
+
+.product-text {
+  text-align: left;
+  margin: 0 auto; 
+  width: fit-content;
+  padding-bottom: 100px;
+}
+
+.product-text ul {
+  padding: 0;
+}
+
+
+/* Add-on Container */
+.Add-on .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.img-container {
+  flex: 1;
+  min-width: 150px; 
+  max-width: 200px;
+  overflow: hidden; 
+  position: relative;
+  text-align: center;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(225, 217, 207, 1) 40%);
+}
+
+.img-container img {
+  width: 100%;
+  height: auto; 
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.img-container:hover img {
+  transform: scale(1.1); /* Zoom in slightly on hover */
+}
+
+.img-description {
+  padding-top: 15px;
+  font-size: 12px;
+  color: black;
+  line-height: 1.2;
+}
+
+/* Policy Tabs */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+}
+
+.tab-radio {
+  position: absolute;
+  left: -999px; /* Hides radio buttons */
+}
+
+.tab-label {
+  flex: 1 0 auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+  color: #4e4e4e;
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+
+.tab-content {
+  width: 100%;
+  padding: 0.5rem;
+  display: none; /* Hidden by default */
+}
+
+/* Active Tab Styles */
+.tab-radio:nth-of-type(1):checked ~ .tab-label:nth-of-type(1),
+.tab-radio:nth-of-type(2):checked ~ .tab-label:nth-of-type(2),
+.tab-radio:nth-of-type(3):checked ~ .tab-label:nth-of-type(3),
+.tab-radio:nth-of-type(4):checked ~ .tab-label:nth-of-type(4),
+.tab-radio:nth-of-type(5):checked ~ .tab-label:nth-of-type(5) {
+  background-color: #fefefe;
+  box-shadow: 0 8px 32px 0 rgba(105, 105, 105, 0.30);
+}
+
+.tab-radio:nth-of-type(1):checked ~ .tab-content:nth-of-type(1),
+.tab-radio:nth-of-type(2):checked ~ .tab-content:nth-of-type(2),
+.tab-radio:nth-of-type(3):checked ~ .tab-content:nth-of-type(3),
+.tab-radio:nth-of-type(4):checked ~ .tab-content:nth-of-type(4),
+.tab-radio:nth-of-type(5):checked ~ .tab-content:nth-of-type(5) {
+  display: block; /* Show content for active tab */
+}
+
+/* Disabled Tab Styles */
+.tab-radio:disabled ~ .tab-label:not(.tab-label--hide) {
+  color: #8e8e8e;
+  cursor: no-drop; /* Indicates disabled state */
+}
+
+.tab-radio:disabled ~ .hide-if-disabled {
+  display: none;
+}
+
+/* Responsive Tabs */
+@media screen and (min-width: 600px) {
+  .tab-label {
+      width: 9.09%; /* Adjust label width for larger screens */
+  }
+}
+
+/* Wrapper Styles */
+.tabs-wrapper {
+  height: calc(100vh + 100px); /* Full height with extra space */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  * {
+      max-width: 768px;
+      overflow-x: hidden;
+  }
+
+  .space {
+      padding-top: 10px;
+  }
+
+  .title-top {
+      padding-top: 50px;
+  }
+
+  .navbar {
+      display: none;
+  }
+
+  .key-description,
+  .Add-on,
+  .fixed-contents {
+      padding: 20px 10px;
+  }
+
+  .title-mid {
+      margin-bottom: 15px; /* Reduce margin */
+  }
+
+  .title-container {
+      margin-top: 10px;
+      padding-top: 20px;
+  }
+
+  .description {
+      padding: 10px 0 0 0;
+  }
+
+  .tab-label {
+      font-size: 0.9rem; /* Adjust font size */
+      padding: 0.5rem; /* Reduce padding */
+  }
+
+  .tab-content {
+      padding: 10px;
+  }
+
+  .front-banner {
+      height: 150px;
+  }
+
+  .banner img {
+      object-fit: cover;
+  }
+
+  .end-banner img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+  }
+
+  ul {
+      list-style-type: circle;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-navbar {
+      display: none; /* Hide mobile navbar on larger screens */
+  }
+}
+ </style>
+</head>
+
+
+
+<body>
+ <div class="ringke_descr">
+  <!-- header -->
+  <div class="header main-container">
+   <div class="container">
+    <div class="banner front-banner">
+     <img alt="Slim Armor CS for Galaxy S10+" class="img-fluid" src="https://cdn.shopify.com/s/files/1/1352/5175/files/1200x270.jpg?v=1729284260"/>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+     <div class="nav-title nav-title-left">
+      <a href="https://www.ebay.com/str/ringkeofficialstoreinc/Apple/_i.html?">
+       Apple
+      </a>
+     </div>
+     <div class="nav-title">
+      <a href="https://www.ebay.com/str/ringkeofficialstoreinc/Samsung/_i.html?store_cat=11013421012&amp;_sop=10&amp;LH_All=1&amp;_tab=shop">
+       Samsung
+      </a>
+     </div>
+     <div class="nav-title">
+      <a href="https://www.ebay.com/str/ringkeofficialstoreinc/Google/_i.html?store_cat=15096581012&amp;LH_ItemCondition=3">
+       Google
+      </a>
+     </div>
+     <div class="nav-title">
+      <a href="https://www.ebay.com/str/ringkeofficialstoreinc/Accessory/_i.html?store_cat=20711578012&amp;LH_ItemCondition=3">
+       Accessories
+      </a>
+     </div>
+     <div class="nav-title nav-title-right">
+      <a href="{Link}">
+       Promotion
+      </a>
+     </div>
+    </div>
+
+
+    <!-- MOBILE DROPDOWN -->
+    <div class="mobile-navbar">
+     <div class="logo-container">
+      <a href="https://www.ebay.com/str/ringkeofficialstoreinc" target="_blank">
+       Ringke Official Store Inc
+      </a>
+     </div>
+     <input class="dropdown-toggle" id="dropdown-toggle" type="checkbox"/>
+     <label class="dropdown-button" for="dropdown-toggle">
+      +
+     </label>
+     <div class="dropdown-content">
+      <a class="inline-container" href="https://www.ebay.com/str/ringkeofficialstoreinc/Apple/_i.html?">
+       <div class="inline-l">
+        Apple
+       </div>
+       <div class="inline-r">
+        &gt;
+       </div>
+      </a>
+      <a class="inline-container" href="https://www.ebay.com/str/ringkeofficialstoreinc/Samsung/_i.html?store_cat=11013421012&amp;_sop=10&amp;LH_All=1&amp;_tab=shop">
+       <div class="inline-l">
+        Samsung
+       </div>
+       <div class="inline-r">
+        &gt;
+       </div>
+      </a>
+      <a class="inline-container" href="https://www.ebay.com/str/ringkeofficialstoreinc/Google/_i.html?store_cat=15096581012&amp;LH_ItemCondition=3">
+       <div class="inline-l">
+        Google
+       </div>
+       <div class="inline-r">
+        &gt;
+       </div>
+      </a>
+      <a class="inline-container" href="https://www.ebay.com/str/ringkeofficialstoreinc/Accessory/_i.html?store_cat=20711578012&amp;LH_ItemCondition=3">
+       <div class="inline-l">
+        Accessories
+       </div>
+       <div class="inline-r">
+        &gt;
+       </div>
+      </a>
+      <a class="inline-container" href="https://www.ebay.com/str/ringkeofficialstoreinc/Ringke-Promotion/_i.html?store_cat=27953925012">
+       <div class="inline-l">
+        Promotion
+       </div>
+       <div class="inline-r">
+        &gt;
+       </div>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="key-description main-container">
+    <div class="container">
+     <div class="title-mid title-top">
+      <p class="font-bold title-txt">
+       About This Item
+      </p>
+     </div>
+     <div class="product-description">
+
+
+
+
+
+
+      <!--product text-->
+      <div class="product-text">
+        <h3>{Product-title}</h3>
+       <ul>
+        <li>
+            text 1
+        </li>
+        <br/>
+        <li>
+            text 2
+        </li>
+        <br/>
+        <li>
+            text 3
+        </li>
+        <br/>
+        <li>
+            text 4
+        </li>
+        <br/>
+        <li>
+            text 5
+        </li>
+        <br/>
+       </ul>
+      </div>
+
+      <!--Add on-->
+      <div class="Add-on main-container">
+       <div class="container">
+        <div class="title-mid">
+         <p class="font-bold title-txt">
+          You May Also Like
+         </p>
+        </div>
+       </div>
+       <div class="container">
+
+
+        <!--Add on 1-->
+        <div class="img-container">
+         <a href="https://www.ebay.com/itm/267081259694">
+          <img alt="For Apple Watch 10
+Dual Easy Film" src="https://i.ebayimg.com/images/g/wfEAAOSw5m5nCXTA/s-l1600.webp"/>
+         </a>
+         <p class="img-description">
+          FUSION
+         </p>
+        </div>
+
+
+        <!--Add on 2-->
+        <div class="img-container">
+         <a href="https://www.ebay.com/itm/267081258105">
+          <img alt="For Apple Watch 10
+Metal One Band" src="https://i.ebayimg.com/images/g/pIgAAOSwE7JnReXN/s-l1600.webp"/>
+         </a>
+         <p class="img-description">
+          FUSION MAGNETIC]
+         </p>
+        </div>
+
+
+        <!--Add on 3-->
+        <div class="img-container">
+         <a href="https://www.ebay.com/itm/267081257879">
+          <img alt="For Apple Watch 10 46mm
+Leather One Basic Bold Band" src="https://i.ebayimg.com/images/g/R0gAAOSw-IdnRjiH/s-l1600.webp"/>
+         </a>
+         <p class="img-description">
+          FUSION BUMPER / PLUS
+         </p>
+        </div>
+
+
+        <!--Add on 4-->
+        <div class="img-container">
+         <a href="https://www.ebay.com/itm/267081258377">
+          <img alt="For Apple Watch 10 42mm
+Leather One Slim Band" src="https://i.ebayimg.com/images/g/CkkAAOSwVeNnEq5h/s-l1600.webp"/>
+         </a>
+         <p class="img-description">
+          FUSION DESIGN
+         </p>
+        </div>
+
+
+        <!-- Policy 탭 -->
+        <div class="fixed-contents main-container">
+         <div class="container" style="overflow: hidden; font-size: 14px;">
+
+          <!-- Seller Policy Section -->
+          <div class="row pt-4 pb-4">
+           <div class="container">
+            <div class="title-mid">
+             <p class="font-bold title-txt">
+              Policy Info
+             </p>
+            </div>
+           </div>
+           <div class="row pt-4 pb-4">
+            <div class="col-sm-12">
+             <div class="tabs-container">
+
+              <!-- Main wrapper -->
+              <div class="tab-controls">
+
+               <!-- Radio block for controlling tabs -->
+               <input checked="" class="tab-radio" id="tab1" name="tabs" type="radio" value="1"/>
+               <input class="tab-radio" id="tab2" name="tabs" type="radio" value="2"/>
+               <input class="tab-radio" id="tab3" name="tabs" type="radio" value="3"/>
+               <input class="tab-radio" id="tab4" name="tabs" type="radio" value="4"/>
+               <input class="tab-radio" id="tab5" name="tabs" type="radio" value="5"/>
+               <!-- Labels for the tabs -->
+               <label class="tab-label hide-if-disabled" for="tab1">
+                About us
+               </label>
+               <label class="tab-label hide-if-disabled" for="tab2">
+                Payment
+               </label>
+               <label class="tab-label hide-if-disabled" for="tab3">
+                Shipping
+               </label>
+               <label class="tab-label hide-if-disabled" for="tab4">
+                Return
+               </label>
+               <label class="tab-label hide-if-disabled" for="tab5">
+                Warranty
+               </label>
+               <!-- About us -->
+               <div class="tab-content hide-if-disabled">
+                <div class="space">
+                 <p class="font-bold title-txt">
+                  About us
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   <span style="font-size: 18px; font-weight: bold;">
+                    Live a Better Day.
+                   </span>
+                   <br/>
+                   <br/>
+                   <strong>
+                    Ringke,
+                   </strong>
+                   designed with a focus on beauty, quality, and performance in accessories.
+                   <br/>
+                   <br/>
+                   Ringke's design philosophy is sleek, elegant, and sophisticated to fit your everyday lifestyle.
+                   <br/>
+                   We are dedicated to providing the perfect balance of high-grade protection and innovative styles that amplify the beauty of your smartphone.
+                   <br/>
+                   <br/>
+                   Our goal is to deliver reliable, high-quality products that improve the functionality and protection of your device.
+                   <br/>
+                   We pay close attention to your needs, resulting in dynamic solutions that support your device’s everyday lifestyle.
+                   <br/>
+                   <br/>
+                   If you would like to learn more about our products, feel free to visit
+                   <a href="https://www.ebay.com/str/ringkeofficialstoreinc?_trksid=p4429486.m3561.l161210" target="_blank">
+                    Ringke Official Store
+                   </a>
+                   and explore customer feedback on the quality we have worked so hard to achieve.
+                   <br/>
+                   <br/>
+                   <span style="font-size: 18px; font-weight: bold;">
+                    "Our best innovations are designed with you in mind."
+                   </span>
+                  </p>
+                 </div>
+                </div>
+               </div>
+               <!-- Payment Policy -->
+               <div class="tab-content hide-if-disabled">
+                <div class="space">
+                 <p class="font-bold title-txt">
+                  Payment
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   Ringke accepts the following payment methods:
+                   <br/>
+                   <strong>
+                    <em>
+                     Visa,
+                    </em>
+                   </strong>
+                   <strong>
+                    <em>
+                     Mastercard,
+                    </em>
+                   </strong>
+                   <strong>
+                    <em>
+                     Discover,
+                    </em>
+                   </strong>
+                   <strong>
+                    <em>
+                     Venmo, PayPal, Google Pay
+                    </em>
+                   </strong>
+                  </p>
+                  <p>
+                   <br/>
+                   Partial Payments are not accepted.
+                   <br/>
+                   An order begins processing once payment has cleared.
+                   <br/>
+                  </p>
+                 </div>
+                </div>
+                <div class="title-container">
+                 <p class="font-bold subtitle-txt">
+                  <i class="fa-solid fa-ban">
+                  </i>
+                  Cancellation &amp; Modification
+                 </p>
+                </div>
+                <div class="description">
+                 <p>
+                  If you would like to cancel or modify your order,
+                  <strong>
+                   please contact us only if you have NOT received a shipping confirmation.
+                  </strong>
+                  <br/>
+                 </p>
+                 <li>
+                  If the order has not yet been processed, it will be canceled, and you may place a new order.
+                 </li>
+                 <li>
+                  If the item has already been processed for shipping, we are unable to cancel the order. However, you may return the item, and a refund will be issued once it has been received at our warehouse.
+                 </li>
+                 <br/>
+                </div>
+                <div class="title-container">
+                 <p class="font-bold subtitle-txt">
+                  <i class="fa-solid fa-rotate">
+                  </i>
+                  Exchange
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   <strong>
+                    Please be aware that we do not offer exchanges.
+                   </strong>
+                  </p>
+                  <br/>
+                  <li aria-level="1" dir="ltr">
+                   All exchange requests will be treated as returns. Once the item is received at our warehouse, we will issue a refund.
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   You may place a new order at your convenience while your return is being processed.
+                  </li>
+                  <p>
+                  </p>
+                 </div>
+                </div>
+               </div>
+               <!-- Shipping Policy -->
+               <div class="tab-content hide-if-disabled">
+                <div class="space">
+                 <p class="font-bold title-txt">
+                  Shipping
+                 </p>
+                </div>
+                <div class="title-container">
+                 <p class="font-bold subtitle-txt">
+                  <i class="fa-solid fa-truck">
+                  </i>
+                  Domestic Shipping
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   <strong>
+                    All orders are shipped via USPS First-Class Mail.
+                   </strong>
+                   <br/>
+                   <em>
+                    (Expedited shipping option is available for an additional charge.)
+                   </em>
+                   <br/>
+                   <br/>
+                  </p>
+                  <li aria-level="1" dir="ltr">
+                   Handling Time: 1 to 2 business days
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   Tracking is provided for all domestic shipments
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   Delivery times may be affected by weather conditions or unexpected delays from the shipping carrier
+                  </li>
+                  <p>
+                  </p>
+                 </div>
+                </div>
+                <div class="title-container">
+                 <p class="font-bold subtitle-txt">
+                  <i class="fa-solid fa-plane-departure">
+                  </i>
+                  International Shipping
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   <strong>
+                    All orders are shipped via UPS Mail Innovations.
+                   </strong>
+                   <br/>
+                   <br/>
+                  </p>
+                  <li aria-level="1" dir="ltr">
+                   Handling Time: 1 to 2 business days
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   <strong>
+                    Estimated Delivery: 3 to 8 weeks
+                   </strong>
+                  </li>
+                  <br/>
+                  <li aria-level="1" dir="ltr">
+                   Individual packages will not be scanned until they reach the international carrier facility, which may take 1 to 2 weeks. As a result, tracking updates may not appear on the UPS website until this process is finalized.
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   Estimated delivery dates are approximate and not guaranteed. Delivery times may vary based on the destination country and the local shipping courier to which the package is transferred.
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   Customs processing may lead to additional delays and charges.
+                   <span style="text-decoration: underline; font-weight: bold;">
+                    The recipient is responsible for any import duties, taxes, and fees imposed by customs, as well as any fees charged by the carrier.
+                   </span>
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   All international addresses must be provided in the English alphabet to ensure proper processing and shipping.
+                  </li>
+                  <br/>
+                  <span style="font-size: 16px; font-weight: bold; color: #AA0000">
+                   ***The Official Ringke Store is not liable for packages lost, stolen, or damaged during transit.
+                  </span>
+                  <br/>
+                  <br/>
+                  <p>
+                  </p>
+                 </div>
+                </div>
+               </div>
+               <!-- Return Policy -->
+               <div class="tab-content hide-if-disabled">
+                <div class="space">
+                 <p class="font-bold title-txt">
+                  Return
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   If you are not completely satisfied with a product purchased directly from our official Ringke eBay store, please contact us with a brief reason for the return, along with any supporting pictures or videos, and your order information.
+                   <br/>
+                   <br/>
+                  </p>
+                  <li aria-level="1" dir="ltr">
+                   Returns are accepted within
+                   <strong>
+                    30 days
+                   </strong>
+                   from the date of purchase.
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   All returned items must be in their original packaging in the same condition as when received.
+                   <ul style="list-style-type: none; margin-left: 10px;">
+                    <li>
+                     o  The
+                     <strong>
+                      20% restocking fee
+                     </strong>
+                     may apply to products not returned in their original condition or if components are missing.
+                    </li>
+                   </ul>
+                  </li>
+                  <li aria-level="1" dir="ltr">
+                   The refund process may take up to 1 to 2 weeks after the item has been received, which includes inspection and bank processing time.
+                   <ul style="list-style-type: none; margin-left: 10px;">
+                    <li>
+                     o  Refunds will be issued only to the original method of payment.
+                    </li>
+                    <li>
+                     o  Shipping fees are non-refundable.
+                    </li>
+                   </ul>
+                  </li>
+                  <br/>
+                  <p>
+                   Please note that we can only assist with orders associated with our own store. If you purchased the item from a different seller, we kindly ask that you reach out to that seller for assistance.
+                  </p>
+                  <br/>
+                  <span style="font-size: 16px; font-weight: bold; color: #AA0000">
+                   ***The Official Ringke Store is not liable for packages lost, stolen, or damaged during transit.
+                  </span>
+                  <br/>
+                  <span style="font-size: 16px; font-weight: bold; color: #AA0000">
+                   We recommend using a traceable shipping method when returning products.
+                  </span>
+                 </div>
+                </div>
+               </div>
+               <!-- Warranty Policy -->
+               <div class="tab-content hide-if-disabled">
+                <div class="space">
+                 <p class="font-bold title-txt">
+                  Warranty
+                 </p>
+                </div>
+                <div class="title-container">
+                 <p class="font-bold subtitle-txt">
+                  <i class="fa-solid fa-business-time">
+                  </i>
+                  Limited Warranty
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   We provide a limited warranty for Ringke products purchased through our official Ringke eBay store against defects in material or workmanship for a period of
+                   <strong>
+                    90 days
+                   </strong>
+                   from the original date of purchase (the “Warranty Period”).
+                  </p>
+                  <p>
+                   <br/>
+                   If a material or workmanship defect arises within the Warranty Period, and a valid claim is received, Ringke Store will either provide a replacement or issue a refund.
+                   <br/>
+                   <br/>
+                   <strong>
+                    ※ Please note:
+                   </strong>
+                   We may request the return of the original item to evaluate your claim or for reference in development and revision purposes.
+                   <br/>
+                   <br/>
+                   <em>
+                    If the product was purchased as part of a combo package, we will only replace the defective item and not the entire package.
+                   </em>
+                   <br/>
+                   <br/>
+                   <span style="font-size: 16px; font-weight: bold;">
+                    What is not covered:
+                   </span>
+                   <br/>
+                  </p>
+                  <li>
+                   Normal wear and tear from product use
+                  </li>
+                  <li>
+                   Damages made by misuse, lack of care, mishandling, accident, abuse, or abnormal usage
+                  </li>
+                  <li>
+                   Installation failure or user carelessness
+                  </li>
+                  <li>
+                   Use of the product for purposes other than its intended use
+                  </li>
+                  <li>
+                   Damage from improper or unauthorized repair or maintenance
+                  </li>
+                  <li>
+                   Modifications or alterations made to the product
+                  </li>
+                  <li>
+                   Any product not manufactured by Ringke, including, but not limited to, non-Ringke products used in connection with the product
+                  </li>
+                  <br/>
+                  <span style="font-size: 16px; font-weight: bold; color: #AA0000">
+                   ***We are not liable for any incidental, consequential, indirect, or punitive damage that may arise from the use of Ringke products, including device damage, data loss, or personal injury.
+                  </span>
+                  <p>
+                  </p>
+                 </div>
+                </div>
+                <div class="title-container">
+                 <p class="font-bold subtitle-txt">
+                  <i class="fa-solid fa-user-shield">
+                  </i>
+                  Warranty Procedure
+                 </p>
+                </div>
+                <div>
+                 <div class="description">
+                  <p>
+                   To be considered for a warranty coverage, please contact us with the following information,
+                  </p>
+                  <li>
+                   <strong>
+                    Order Information
+                   </strong>
+                  </li>
+                  <li>
+                   <strong>
+                    Pictures or Videos
+                   </strong>
+                   to support your claim
+                  </li>
+                  <li>
+                   <strong>
+                    A brief explanation
+                   </strong>
+                   of the claim
+                  </li>
+                  <br/>
+                  <p>
+                   Once we receive this information, we will evaluate your eligibility for our warranty. If your order qualifies for our warranty coverage, a replacement or refund will be offered as a one-time option only.
+                   <br/>
+                   <br/>
+                   <strong>
+                    ※ Please note:
+                   </strong>
+                   If the product in question has been discontinued, the only remedy available will be a refund.
+                  </p>
+                 </div>
+                </div>
+               </div>
+              </div>
+              <!-- End of tab-controls -->
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <!-- 마지막 배너이미지 변경 -->
+        <div class="end-banner">
+         <a href="https://www.ebay.com/str/ringkeofficialstoreinc">
+          <img alt="thank you for choosing ringke better yours" src="https://cdn.shopify.com/s/files/1/1352/5175/files/1200x270_2.jpg?v=1729600508"/>
+         </a>
+        </div>
+        <!-- 마지막 배너이미지 끝 -->
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</body>
