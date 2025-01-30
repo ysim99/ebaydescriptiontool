@@ -5,138 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Editor</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <h1>eBay Description Editor</h1>
 
-    <div class="product-text-section">
-    <div class="product-text-container">
-        <textarea class="product-title" id="product-title" placeholder="Product Name"></textarea>
-        <textarea class="product-text" id="product-text" placeholder="Product Description"></textarea>
+    <div class="ede-product-text-section">
+    <div class="ede-product-text-container">
+        <textarea class="ede-product-title" id="product-title" placeholder="Product Name"></textarea>
+        <textarea class="ede-product-text" id="product-text" placeholder="Product Description"></textarea>
     </div>
     </div>
-    <div class="btn-container">
+    <div class="ede-btn-container">
         <button id="add-product">+</button>
         <button id="remove-product">-</button>
     </div>
 
-    <div class="dnd-container">
-        <div class="img-container">
-            <div class="drop-target" id="dropTarget">Drop Image Here</div>
-            <input type="text" id="img-url" placeholder="Image URL" hidden>
-            <input type="text" id="img-description" placeholder="Product Name">
-            <input type="text" id="img-link" placeholder="Product Link">
+    <div class="ede-dnd-container">
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-1" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-1" placeholder="Product Name">
+            <input type="text" id="img-link-1" placeholder="Product Link">
             <button id="clear-img">CLEAR</button>
         </div>
 
-        <div class="img-container">
-            <div class="drop-target" id="dropTarget">Drop Image Here</div>
-            <input type="text" id="img-url" placeholder="Image URL" hidden>
-            <input type="text" id="img-description" placeholder="Product Name">
-            <input type="text" id="img-link" placeholder="Product Link">
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-2" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-2" placeholder="Product Name">
+            <input type="text" id="img-link-2" placeholder="Product Link">
             <button id="clear-img">CLEAR</button>
         </div>
 
-        <div class="img-container">
-            <div class="drop-target" id="dropTarget">Drop Image Here</div>
-            <input type="text" id="img-url" placeholder="Image URL" hidden>
-            <input type="text" id="img-description" placeholder="Product Name">
-            <input type="text" id="img-link" placeholder="Product Link">
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-3" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-3" placeholder="Product Name">
+            <input type="text" id="img-link-3" placeholder="Product Link">
             <button id="clear-img">CLEAR</button>
         </div>
 
-        <div class="img-container">
-            <div class="drop-target" id="dropTarget">Drop Image Here</div>
-            <input type="text" id="img-url" placeholder="Image URL" hidden>
-            <input type="text" id="img-description" placeholder="Product Name">
-            <input type="text" id="img-link" placeholder="Product Link">
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-4" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-4" placeholder="Product Name">
+            <input type="text" id="img-link-4" placeholder="Product Link">
             <button id="clear-img">CLEAR</button>
         </div>
     </div>
 
-    <div class="btn-container">
-        <button onclick="saveChanges()">Save & Copy</button>
+    <div class="ede-btn-container">
+        <button id="save-btn" onclick="saveChanges()">Save & Copy</button>
     </div>
-    
 
-    
+    <div class="preview-container">
+        <h2>Preview</h2>
+        <div id="preview-box">
+            <!-- Dynamically injected preview content -->
+        </div>
+    </div>
+
+    <!-- Add/remove Product Description Section -->
     <script>
-
-    // Product description button control
-    document.addEventListener("DOMContentLoaded", function(){
-        const section = document.querySelector(".product-text-section");
-        const addButton = document.getElementById("add-product");
-        const removeButton = document.getElementById("remove-product");
-
-        addButton.addEventListener("click", function(){
-
-            // create a new product text container
-            const newProductTextContainer = document.createElement("div");
-            newProductTextContainer.classList.add("product-text-container");
-
-            const titleTextarea = document.createElement("textarea");
-            titleTextarea.classList.add("product-title");
-            titleTextarea.placeholder = "Product Name";
-
-            const descriptionTextarea = document.createElement("textarea");
-            descriptionTextarea.classList.add("product-text");
-            descriptionTextarea.placeholder = "Product Description";
-
-            newProductTextContainer.appendChild(titleTextarea);
-            newProductTextContainer.appendChild(descriptionTextarea);
-
-            section.appendChild(newProductTextContainer);
-    });
-
-        removeButton.addEventListener("click", function(){
-            const containers = section.querySelectorAll(".product-text-container");
-
-            if (containers.length > 1){
-                containers[containers.length - 1].remove();
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            const section = document.querySelector(".ede-product-text-section");
+            const addButton = document.getElementById("add-product");
+            const removeButton = document.getElementById("remove-product");
+        
+            // Function to add new product text fields
+            addButton.addEventListener("click", function () {
+                const newProductTextContainer = document.createElement("div");
+                newProductTextContainer.classList.add("ede-product-text-container");
+        
+                const titleTextarea = document.createElement("textarea");
+                titleTextarea.classList.add("ede-product-title");
+                titleTextarea.placeholder = "Product Name";
+        
+                const descriptionTextarea = document.createElement("textarea");
+                descriptionTextarea.classList.add("ede-product-text");
+                descriptionTextarea.placeholder = "Product Description";
+        
+                newProductTextContainer.appendChild(titleTextarea);
+                newProductTextContainer.appendChild(descriptionTextarea);
+                section.appendChild(newProductTextContainer);
+            });
+        
+            // Function to remove the last product text fields
+            removeButton.addEventListener("click", function () {
+                const containers = section.querySelectorAll(".ede-product-text-container");
+                if (containers.length > 1) {
+                    containers[containers.length - 1].remove();
+                }
+            });
         })
-    })
-
-    //image drag and drop
-    document.addEventListener("DOMContentLoaded", function () {
-    const dropTargets = document.querySelectorAll(".drop-target");
-
-    dropTargets.forEach((dropTarget) => {
-        dropTarget.addEventListener("dragover", function (e) {
-            e.preventDefault();
-            dropTarget.style.backgroundColor = "#ddd";
-        });
-
-        dropTarget.addEventListener("dragleave", function () {
-            dropTarget.style.backgroundColor = "";
-        });
-
-        dropTarget.addEventListener("drop", function (e) {
-            e.preventDefault();
-            dropTarget.style.backgroundColor = "";
-
-            const file = e.dataTransfer.files[0];
-            if (file && file.type.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    const imgURL = event.target.result;
-                    
-                    // Create an image preview inside the drop target
-                    dropTarget.innerHTML = `<img src="${imgURL}" alt="Dropped Image" style="width: 100%; height: 100%; object-fit: cover;">`;
-                    
-                    // Store the image URL in the hidden input field
-                    const imgURLInput = dropTarget.parentElement.querySelector("#img-url");
-                    imgURLInput.value = imgURL;
-                };
-                reader.readAsDataURL(file);
-            } else {
-                alert("Please drop a valid image file.");
-            }
-        });
-    });
-});
     </script>
 
+    <!-- Image Drag and Drop -->
+    <script>
+        const dropTargets = document.querySelectorAll(".ede-drop-target");
+        const clearButtons = document.querySelectorAll("#clear-img");
+        
+        dropTargets.forEach((dropTarget) => {
+            dropTarget.addEventListener("dragover", function (e) {
+                e.preventDefault();
+                dropTarget.style.backgroundColor = "#ddd";
+            });
+        
+            dropTarget.addEventListener("dragleave", function () {
+                dropTarget.style.backgroundColor = "";
+            });
+        
+            dropTarget.addEventListener("drop", function (e) {
+                e.preventDefault();
+                dropTarget.style.backgroundColor = "";
+        
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith("image/")) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        const imgURL = event.target.result;
+        
+                        // Create an image preview inside the drop target
+                        dropTarget.innerHTML = `<img src="${imgURL}" alt="Dropped Image" style="max-width: 100%; height: 100%; object-fit: cover;">`;
+        
+                        // Store the image URL in the hidden input field
+                        const imgURLInput = dropTarget.parentElement.querySelector("input[placeholder='Image URL']");
+                        imgURLInput.value = imgURL;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert("Please drop a valid image file.");
+                }
+            });
+        });
+        
+        clearButtons.forEach((clearButton) => {
+            clearButton.addEventListener("click", function () {
+                const imgContainer = clearButton.parentElement;
+                const dropTarget = imgContainer.querySelector(".ede-drop-target");
+                const imgURLInput = imgContainer.querySelector("input[placeholder='Image URL']");
+        
+                dropTarget.innerHTML = "Drop Image Here";
+                imgURLInput.value = "";
+            });
+        });
+    </script>
+    
 </body>
 </html>

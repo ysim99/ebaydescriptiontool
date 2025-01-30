@@ -1,3 +1,12 @@
+*{
+    font-family: "Montserrat";
+}
+
+body{
+    color:white;
+    background: rgb(63, 63, 63);
+}
+
 h1{
     width: 100%;
     text-align: center;
@@ -5,14 +14,14 @@ h1{
 
 
 /*product-text-section*/
-.product-text-section{
+.ede-product-text-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.product-text-container{
+.ede-product-text-container{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -22,64 +31,130 @@ h1{
     gap: 10px;    
 }
 
-.product-title{
+.ede-product-title{
     width: 60%;
     height: 30px;
     border-radius: 12px;
     padding: 15px;
+    box-shadow: 5px 5px 5px #1a1919;
 }
 
-.product-text{
+.ede-product-text{
     width: 60%;
     height: 150px;
     border-radius: 12px;
     padding: 15px;
+    box-shadow: 5px 5px 5px #1a1919;
 }
 
 
 /*dnd-container*/
-.drop-target{
+.ede-drop-target{
+    background-color: white;
+    color:#4e4e4e;
     height: 15vw;
     width: 15vw;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
-.dnd-container{
+.ede-dnd-container{
     display: flex;
     justify-content: space-around;
     margin-bottom: 50px;
 }
 
-.img-container{
+.ede-img-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 5px;
+    box-shadow: 5px 5px 5px #1a1919;
 }
 
-.btn-container{
+.ede-btn-container{
     display: flex;
     justify-content: center;
     gap: 15px;
+    margin-bottom: 80px;
 }
 
-.btn-container button{
+.ede-btn-container button{
+    box-shadow: 5px 5px 5px #1a1919;
     padding: 10px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-.btn-container button:hover{
-    background-color: black;
+#add-product ,#remove-product{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.ede-btn-container button:hover{
+    background-color: rgb(218, 98, 0);
     color: white;
 }
 
-.btn-container button:active{
+.ede-btn-container button:active{
     opacity: 0.3;
+}
+
+#clear-img{
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#clear-img:hover{
+    background-color: rgb(218, 98, 0);
+    color: white;
+}
+
+#save-btn{
+    width: 500px;
+    padding: 20px;
+}
+
+/*preview-box*/
+.preview-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid #ccc;
+    background: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#preview-box {
+    padding: 10px;
+}
+
+.preview-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.preview-description {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.preview-image {
+    max-width: 100px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
