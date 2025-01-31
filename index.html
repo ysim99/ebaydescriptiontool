@@ -125,20 +125,24 @@
 
                 let imgURLInput = dropTarget.parentElement.querySelector("input[placeholder='Image URL']");
 
-                // Check if the drop contains a direct image URL
-                let draggedData = e.dataTransfer.getData("text/html");
-                let doc = new DOMParser().parseFromString(draggedData, "text/html");
-                let imgElement = doc.querySelector("img");
+                // First, try getting a direct URL from text/plain
+                let realImgURL = e.dataTransfer.getData("text/plain").trim();
 
-                if (imgElement && imgElement.src) {
-                    let realImgURL = imgElement.src; // Extracted real image URL
+                // If text/plain doesn't work, fall back to text/html
+                if (!realImgURL) {
+                    let draggedData = e.dataTransfer.getData("text/html");
+                    let doc = new DOMParser().parseFromString(draggedData, "text/html");
+                    let imgElement = doc.querySelector("img");
+                    if (imgElement) realImgURL = imgElement.src;
+                }
 
+                // If we successfully get an image URL
+                if (realImgURL && realImgURL.startsWith("http")) {
                     // Insert the real image URL into the input field
                     imgURLInput.value = realImgURL;
 
                     // Show preview using the real image URL
                     dropTarget.innerHTML = `<img src="${realImgURL}" alt="Dropped Image" style="max-width: 100%; height: auto; object-fit: cover;">`;
-
                 } else {
                     alert("Couldn't detect an image URL. Please manually paste the image link.");
                 }
