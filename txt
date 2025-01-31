@@ -1,0 +1,92 @@
+<script>
+    function saveChanges() {
+        // Get product title and description
+        const title = document.getElementById("product-title").value;
+        const descriptionElements = document.querySelectorAll(".ede-product-text");
+        let descriptionHTML = "";
+    
+        descriptionElements.forEach((desc) => {
+            if (desc.value.trim() !== "") {
+                descriptionHTML += `<li>${desc.value}</li><br>`;
+            }
+        });
+    
+        // Get image data
+        const images = [];
+        for (let i = 1; i <= 4; i++) {
+            const imgUrl = document.getElementById(`img-url-${i}`).value;
+            const imgDesc = document.getElementById(`img-description-${i}`).value;
+            const imgLink = document.getElementById(`img-link-${i}`).value;
+    
+            if (imgUrl && imgDesc && imgLink) {
+                images.push({ url: imgUrl, desc: imgDesc, link: imgLink });
+            }
+        }
+    
+        // Construct updated source.html content
+        let updatedHTML = 
+        `
+
+        <div class="key-description main-container">
+         <div class="container">
+          <div class="title-mid title-top">
+             <p class="font-bold title-txt">
+              About This Item
+             </p>
+            </div>
+            <div class="product-description-container">
+    
+              <!-- Product Title -->
+              <div class="product-title">
+                <p id="source-product-title">${title}</p>
+              </div>
+    
+              <!-- Product Description -->
+              <div class="product-description">
+               <ul id="source-product-description">
+                ${descriptionHTML}
+               </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Add-on Products -->
+        <div class="Add-on main-container">
+            <div class="container">
+                <div class="title-mid">
+                  <p class="font-bold title-txt">
+                  You May Also Like
+                  </p>
+                </div>
+            </div>
+            <div class="container" id="source-addons">
+
+        `;
+    
+        // Append image data
+        images.forEach((image) => {
+            updatedHTML += `
+            <div class="img-container">
+              <a href="${image.link}">
+              <img alt="${image.desc}" src="${image.url}">
+              </a>
+              <p class="img-description">
+              ${image.desc}
+              </p>
+            </div>`;
+        });
+    
+        updatedHTML += `</div></div>`;
+    
+        // Copy to clipboard
+        const tempTextarea = document.createElement("textarea");
+        tempTextarea.value = updatedHTML;
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempTextarea);
+    
+        alert("HTML copied to clipboard!");
+    }
+    </script>

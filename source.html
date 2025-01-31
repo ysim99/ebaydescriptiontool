@@ -201,10 +201,6 @@
  overflow: hidden;
 }
 
-.front-banner {
- height: 100%;
-}
-
 .banner img {
  width: 100%;
  height: 100%;
@@ -241,20 +237,25 @@ li {
  padding: 20px 0 0 0;
 }
 
-.product-description {
+.product-description-container {
  padding-top: 40px;
  max-width: 1200px;
  margin: 0 auto; /* Centers the product-description container */
 }
 
-.product-text {
+.product-description, .product-title {
  text-align: left;
  margin: 0 auto; 
  width: fit-content;
- padding-bottom: 100px;
+ padding-bottom: 40px;
 }
 
-.product-text ul {
+.product-title{
+ font-weight: 700;
+ font-size: 14px;
+}
+
+.product-description ul {
  padding: 0;
 }
 
@@ -449,7 +450,7 @@ li {
 <div class="header main-container">
   <div class="container">
    <div class="banner front-banner">
-    <img alt="Slim Armor CS for Galaxy S10+" class="img-fluid" src="https://cdn.shopify.com/s/files/1/1352/5175/files/1200x270.jpg?v=1729284260">
+    <img alt="Slim Armor CS for Galaxy S10+" style ="max-width: 100%; height: auto;" class="img-fluid" src="https://cdn.shopify.com/s/files/1/1352/5175/files/1200x270.jpg?v=1729284260">
    </div>
    <!-- NAVBAR -->
    <div class="navbar">
@@ -536,7 +537,7 @@ li {
   </div>
 </div>
 
-
+ <!--product description-->
 <div class="key-description main-container">
  <div class="container">
   <div class="title-mid title-top">
@@ -544,32 +545,17 @@ li {
       About This Item
      </p>
     </div>
-    <div class="product-description">
+    <div class="product-description-container">
 
       <!--product text-->
-      <div class="product-text">
-       <ul>
-        <li>
-         Heavy-duty, rugged case for <b>iPhone 16 Pro / iPhone 16 Pro Max
-        </b></li>
-        <br>
-        <li>
-         Double-layer TPU and polycarbonate enhance protection
-        </li>
-        <br>
-        <li>
-         Durable and adjustable 360˚ rotating kickstand
-        </li>
-        <br>
-        <li>
-         Full precision camera control button cover
-        </li>
-        <br>
-        <li>
-         Neodymium magnet ring for MagSafe compatibility
-        </li>
-        <br>
-       </ul>
+      <div class="product-title">
+        <p id="source-product-title">{{PRODUCT-TITLE}}</p>
+      </div>
+
+      <div class="product-description">
+        <ul id="source-product-description">
+          {{PRODUCT_DESCRIPTION}}
+        </ul>
       </div>
     </div>
   </div>
@@ -584,47 +570,7 @@ li {
           </p>
         </div>
         </div>
-        <div class="container">
-        <!--Add on 1-->
-        <div class="img-container">
-          <a href="https://www.ebay.com/itm/267132712654">
-          <img alt="For Apple Watch 10
-  Dual Easy Film" src="https://i.ebayimg.com/images/g/UmMAAOSwJFdnkQdq/s-l1600.webp">
-          </a>
-          <p class="img-description">
-          For Galaxy S25 Series<br>Easy Slide Tempered Glass
-          </p>
-        </div>
-        <!--Add on 2-->
-        <div class="img-container">
-          <a href="https://www.ebay.com/itm/256791508453">
-          <img alt="For Apple Watch 10
-  Metal One Band" src="https://i.ebayimg.com/images/g/7UkAAOSw21hniYAe/s-l1600.webp">
-          </a>
-          <p class="img-description">
-          For Galaxy S25 Series<br>Camera Lens Frame Glass
-          </p>
-        </div>
-        <!--Add on 3-->
-        <div class="img-container">
-          <a href="https://www.ebay.com/itm/254550397110">
-          <img alt="For Apple Watch 10 46mm
-  Leather One Basic Bold Band" src="https://i.ebayimg.com/images/g/EN8AAOSwYWpkWQBf/s-l1600.webp">
-          </a>
-          <p class="img-description">
-          Ringke Shoulder &amp; Hand Strap
-          </p>
-        </div>
-        <!--Add on 4-->
-        <div class="img-container">
-          <a href="https://www.ebay.com/itm/266566124385">
-          <img alt="For Apple Watch 10 42mm
-  Leather One Slim Band" src="https://i.ebayimg.com/images/g/QloAAOSwnmRnkRwF/s-l1600.webp">
-          </a>
-          <p class="img-description">
-          Qi2 Peltier Magnetic <br>Car Mount Charger
-          </p>
-        </div>
+        <div class="container" id="source-addons">
         </div>
     </div>
 
