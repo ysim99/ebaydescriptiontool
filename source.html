@@ -265,11 +265,16 @@ li {
  display: flex;
  justify-content: center;
  flex-wrap: wrap;
- gap: 50px;
+}
+
+#source-addons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
 }
 
 .img-container {
- flex: 1;
+box-sizing: border-box;
  min-width: 150px; 
  max-width: 200px;
  overflow: hidden; 
@@ -570,7 +575,8 @@ li {
           </p>
         </div>
         </div>
-        <div class="container" id="source-addons">
+        <div id="source-addons">
+            <!-- placeholder -->
         </div>
     </div>
 

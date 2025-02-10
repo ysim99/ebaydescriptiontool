@@ -24,6 +24,8 @@
         <button id="remove-product">-</button>
     </div>
 
+
+    <!-- add-on container 1st row -->
     <div class="ede-dnd-container">
         <div class="ede-img-container">
             <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
@@ -58,6 +60,41 @@
         </div>
     </div>
 
+    <!-- add-on container 2nd row -->
+    <div class="ede-dnd-container">
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-5" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-5" placeholder="Product Name">
+            <input type="text" id="img-link-5" placeholder="Product Link">
+            <button id="clear-img">CLEAR</button>
+        </div>
+
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-6" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-6" placeholder="Product Name">
+            <input type="text" id="img-link-6" placeholder="Product Link">
+            <button id="clear-img">CLEAR</button>
+        </div>
+
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-7" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-7" placeholder="Product Name">
+            <input type="text" id="img-link-7" placeholder="Product Link">
+            <button id="clear-img">CLEAR</button>
+        </div>
+
+        <div class="ede-img-container">
+            <div class="ede-drop-target" id="dropTarget">Drop Image Here</div>
+            <input type="text" id="img-url-8" placeholder="Image URL" hidden>
+            <input type="text" id="img-description-8" placeholder="Product Name">
+            <input type="text" id="img-link-8" placeholder="Product Link">
+            <button id="clear-img">CLEAR</button>
+        </div>
+    </div>
+
     <div class="ede-btn-container">
         <button id="save-btn" onclick="saveChanges()">Save & Copy</button>
     </div>
@@ -69,216 +106,10 @@
         </div>
     </div>
 
-    <!-- Add/remove Product Description Section -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const section = document.querySelector(".ede-product-text-section");
-            const addButton = document.getElementById("add-product");
-            const removeButton = document.getElementById("remove-product");
-        
-            // Function to add new product text fields
-            addButton.addEventListener("click", function () {
-                const newProductTextContainer = document.createElement("div");
-                newProductTextContainer.classList.add("ede-product-text-container");
-        
-                const titleTextarea = document.createElement("textarea");
-                titleTextarea.classList.add("ede-product-title");
-                titleTextarea.placeholder = "Product Name";
-        
-                const descriptionTextarea = document.createElement("textarea");
-                descriptionTextarea.classList.add("ede-product-text");
-                descriptionTextarea.placeholder = "Product Description";
-        
-                newProductTextContainer.appendChild(titleTextarea);
-                newProductTextContainer.appendChild(descriptionTextarea);
-                section.appendChild(newProductTextContainer);
-            });
-        
-            // Function to remove the last product text fields
-            removeButton.addEventListener("click", function () {
-                const containers = section.querySelectorAll(".ede-product-text-container");
-                if (containers.length > 1) {
-                    containers[containers.length - 1].remove();
-                }
-            });
-        })
-    </script>
+<script src = "scripts/add-remove-btn.js"></script>
+<script src = "scripts/drag-n-drop.js"></script>
+<script src = "scripts/preview.js"></script>
+<script src = "scripts/saveChange.js"></script>
 
-    <!-- Image Drag and Drop -->
-    <script>
-        const dropTargets = document.querySelectorAll(".ede-drop-target");
-        const clearButtons = document.querySelectorAll("#clear-img");
-        
-        dropTargets.forEach((dropTarget) => {
-            dropTarget.addEventListener("dragover", function (e) {
-                e.preventDefault();
-                dropTarget.style.backgroundColor = "#ddd";
-            });
-        
-            dropTarget.addEventListener("dragleave", function () {
-                dropTarget.style.backgroundColor = "";
-            });
-        
-            dropTarget.addEventListener("drop", function (e) {
-                e.preventDefault();
-                dropTarget.style.backgroundColor = "";
-
-                let imgURLInput = dropTarget.parentElement.querySelector("input[placeholder='Image URL']");
-
-                // First, try getting a direct URL from text/plain
-                let realImgURL = e.dataTransfer.getData("text/plain").trim();
-
-                // If text/plain doesn't work, fall back to text/html
-                if (!realImgURL) {
-                    let draggedData = e.dataTransfer.getData("text/html");
-                    let doc = new DOMParser().parseFromString(draggedData, "text/html");
-                    let imgElement = doc.querySelector("img");
-                    if (imgElement) realImgURL = imgElement.src;
-                }
-
-                // If we successfully get an image URL
-                if (realImgURL && realImgURL.startsWith("http")) {
-                    // Insert the real image URL into the input field
-                    imgURLInput.value = realImgURL;
-
-                    // Show preview using the real image URL
-                    dropTarget.innerHTML = `<img src="${realImgURL}" alt="Dropped Image" style="max-width: 100%; height: auto; object-fit: cover;">`;
-                } else {
-                    alert("Couldn't detect an image URL. Please manually paste the image link.");
-                }
-            });
-        });
-        
-        clearButtons.forEach((clearButton) => {
-            clearButton.addEventListener("click", function () {
-                const imgContainer = clearButton.parentElement;
-                const dropTarget = imgContainer.querySelector(".ede-drop-target");
-                const imgURLInput = imgContainer.querySelector("input[placeholder='Image URL']");
-        
-                dropTarget.innerHTML = "Drop Image Here";
-                imgURLInput.value = "";
-            });
-        });
-    </script>
-
-
-<script>
-    function previewHTML(updatedHTML) {
-    const previewContainer = document.getElementById("preview-box");
-    previewContainer.innerHTML = ""; // Clear previous preview
-
-    const iframe = document.createElement("iframe");
-    iframe.style.width = "100%";
-    iframe.style.height = "600px";
-    iframe.style.border = "1px solid #ddd";
-
-    previewContainer.appendChild(iframe);
-
-    iframe.contentDocument.open();
-    iframe.contentDocument.write(updatedHTML);
-    iframe.contentDocument.close();
-}
-
-document.getElementById("preview-btn").addEventListener("click", function () {
-    fetch("source.html")
-        .then(response => response.text())
-        .then(sourceHTML => previewHTML(sourceHTML))
-        .catch(error => console.error("Error fetching source.html:", error));
-});
-
-
-    function saveChanges() {
-        fetch("source.html")
-        .then(response => response.text())
-        .then(sourceHTML => {
-            // Convert source.html into a DOM element
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(sourceHTML, "text/html");
-
-            //Handle Multiple Product Titles and Descriptions
-            const productContainers = document.querySelectorAll(".ede-product-text-container");
-            let productHTML = "";
-
-            productContainers.forEach((container) => {
-                const title = container.querySelector(".ede-product-title")?.value.trim() || "";
-                const description = container.querySelector(".ede-product-text")?.value.trim() || "";
-
-                if (title || description) {
-                    productHTML += `<div class="product-item">`; // Wrapper for each product
-                    
-                    if (title) {
-                        productHTML += `<p class="product-title">${title}</p>`; // Keep title first
-                    }
-
-                    if (description) {
-                        const sentences = description.split("\n").filter(sentence => sentence.trim() !== "");
-                        productHTML += `<ul class="product-description">`;
-                        sentences.forEach(sentence => {
-                            productHTML += `<li>${sentence.trim()}</li>`; // Wrap each line in <li>
-                        });
-                        productHTML += `</ul>`;
-                    }
-
-                    productHTML += `</div>`; // End product wrapper
-                }
-            });
-
-            // Insert into source.html
-            const descContainer = doc.querySelector(".product-description-container");
-            if (descContainer) descContainer.innerHTML = productHTML;
-
-            
-            // Update Image Data
-            const images = [];
-            for (let i = 1; i <= 4; i++) {
-                const imgUrl = document.getElementById(`img-url-${i}`).value;
-                const imgDesc = document.getElementById(`img-description-${i}`).value;
-                const imgLink = document.getElementById(`img-link-${i}`).value;
-
-                if (imgUrl && imgDesc && imgLink) {
-                    images.push({ url: imgUrl, desc: imgDesc, link: imgLink });
-                }
-            }
-
-            const addonContainer = doc.querySelector("#source-addons");
-            if (addonContainer) {
-                addonContainer.innerHTML = ""; // Clear existing add-ons
-
-                images.forEach((image) => {
-                    const newImageHTML = `
-                    <div class="img-container">
-                        <a href="${image.link}">
-                            <img alt="${image.desc}" src="${image.url}">
-                        </a>
-                        <p class="img-description">${image.desc}</p>
-                    </div>`;
-                    addonContainer.innerHTML += newImageHTML;
-                });
-            }
-
-        // Final Stage
-            const updatedHTML = doc.documentElement.outerHTML;
-
-            previewHTML(updatedHTML); 
-
-        // Copy the updated HTML to clipboard
-            const tempTextarea = document.createElement("textarea");
-            tempTextarea.value = updatedHTML;
-            document.body.appendChild(tempTextarea);
-            tempTextarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempTextarea);
-
-            alert("Copied to clipboard!");
-        })
-        .catch(error => {
-            console.error("Error fetching source.html:", error);
-            alert("Failed to fetch source.html.");
-        });
-
-    }
-    </script>
-    
-    
 </body>
 </html>
