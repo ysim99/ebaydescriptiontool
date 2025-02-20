@@ -237,10 +237,16 @@ li {
  padding: 20px 0 0 0;
 }
 
+.product-item{
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
 .product-description-container {
  padding-top: 40px;
  max-width: 1200px;
- margin: 0 auto; /* Centers the product-description container */
+ margin: 0 auto;
 }
 
 .product-description, .product-title {
@@ -388,6 +394,27 @@ li {
     gap: 20px;
 }
 
+.product-description, .product-title {
+ text-align: left;
+ margin: 0 5px;
+}
+
+.product-title{
+    font-size: 24px;
+}
+
+ul,li { list-style-type: circle;
+        list-style-position:inside;
+        margin:5px 0;
+        padding:0; }
+
+li{
+    margin-top:15px;
+}
+
+br{
+    display: none;
+}
 
  .space {
      padding-top: 10px;
